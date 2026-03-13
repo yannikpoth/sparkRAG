@@ -1,5 +1,7 @@
 import argparse
 
+from spark_rag.ingest import ingest_file
+
 def main():
     parser=argparse.ArgumentParser(prog="spark_rag")
     sub = parser.add_subparsers(dest="command")
@@ -10,7 +12,7 @@ def main():
     args = parser.parse_args()
 
     if args.command == "ingest":
-        print(f"[ingest] path={args.path}")
+        print(ingest_file(path=args.path))
     else:
         parser.print_help()
 
